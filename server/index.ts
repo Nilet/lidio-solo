@@ -9,8 +9,11 @@ const port = process.env.PORT || 3001;
 app.use(fileUpload());
 const corsOptions = {
   origin: '*',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   optionsSuccessStatus: 200,
 };
+
+app.use(express.static('./dist'));
 app.use(cors(corsOptions))
 app.use(express.json());
 
