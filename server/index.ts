@@ -1,5 +1,6 @@
 import express from 'express';
 import fileUpload from 'express-fileupload';
+import path from 'path'
 import cors from 'cors';
 
 const app = express();
@@ -26,6 +27,11 @@ app.post("/upload", (req, res ) => {
 );
 
 app.get("/health-check", (_,res) => res.status(200).json({"asd" : "working as expected"}));
+
+app.get('*', (_, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 
 // Start the server
 app.listen(port, () => {
