@@ -4,11 +4,13 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "start": "run-p --race dev backend",
-        "dev": "vite",
+        "start": "node server-build/index.js",
+        "dev": "run-p --race dev:vite backend",
+        "dev:vite": "vite",
         "backend": "ts-node --esm server/index.ts",
-        "build": "tsc && vite build",
-        "start:server": "ts-node --project tsconfig.node.json server/index.ts",
+        "build": "tsc -p tsconfig.server.json && vite build",
+        "backend:build": "tsc -p tsconfig.server.json",
+        "vite:build": "vite build",
         "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview"
     },

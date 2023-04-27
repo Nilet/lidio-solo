@@ -24,9 +24,9 @@ function LabsWrapper() {
                 Selecione o laboratório
             </h2>
             <div className="flex justify-center">
-                {labs.map((lab) => {
+                {labs.map((lab, index) => {
                     return (
-                        lab === selectedLab ? <LoadingButton /> : <Button content={lab} callback={() => mudaBotao(lab)} />
+                        lab === selectedLab ? <LoadingButton /> : <Button key={index} content={lab} callback={() => mudaBotao(lab)} />
                     )
                 })}
             </div>

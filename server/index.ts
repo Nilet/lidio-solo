@@ -7,10 +7,11 @@ const port = process.env.PORT || 3001;
 
 app.use(fileUpload());
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: '*',
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions))
+app.use(express.json());
 
 app.post("/upload", (req, res ) => {
         if (!req.files) {
@@ -20,11 +21,11 @@ app.post("/upload", (req, res ) => {
         const uploadedFile = req.files.file;
 
         console.log(uploadedFile)
-        res.send(`Filename is: ${uploadedFile} `);
+        res.send(`Filename is: ${JSON.stringify(uploadedFile)} `);
     }
 );
 
-app.get("/health-check", (_,res) => res.status(200).send("Working as expected"));
+app.get("/health-check", (_,res) => res.status(200).json({"asd" : "working as expected"}));
 
 // Start the server
 app.listen(port, () => {
