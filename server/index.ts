@@ -2,6 +2,11 @@ import express from 'express';
 import fileUpload from 'express-fileupload';
 import path from 'path'
 import cors from 'cors';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -32,7 +37,7 @@ app.post("/upload", (req, res ) => {
 app.get("/health-check", (_,res) => res.status(200).json({"asd" : "working as expected"}));
 
 app.get('*', (_, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
 
 
