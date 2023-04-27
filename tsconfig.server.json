@@ -1,7 +1,7 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
-        "module": "CommonJS",
+        "module": "ES6",
         "moduleResolution": "node",
         "outDir": "server-build",
         "esModuleInterop": true,
