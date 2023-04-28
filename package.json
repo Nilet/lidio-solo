@@ -13,7 +13,7 @@
         "vite:build": "vite build",
         "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
-        "vercel": "node server-build/server.js"
+        "vercel": "node server-build/index.js"
     },
     "dependencies": {
         "@types/react-router-dom": "^5.3.3",

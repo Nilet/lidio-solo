@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/(?!_assets)(.*)",
       "destination": "/"
     }
   ],
@@ -12,3 +12,4 @@
     }
   ]
 }
+
