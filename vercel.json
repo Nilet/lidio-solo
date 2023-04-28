@@ -18,10 +18,4 @@
             "use": "@vercel/node"
         }
     ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "server-build/index.js"
-        }
-    ]
 }
