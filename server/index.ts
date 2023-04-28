@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 
-app.post("/upload", (req, res ) => {
+app.post("/api/upload", (req, res ) => {
         if (!req.files) {
             return res.status(400).send('No files were uploaded.');
         }
@@ -40,7 +40,7 @@ app.post("/upload", (req, res ) => {
     }
 );
 
-app.get("/health-check", (_,res) => res.status(200).json({"asd" : "working as expected"}));
+app.get("/api/health-check", (_,res) => res.status(200).json({"asd" : "working as expected"}));
 
 app.get('*', (_, res) => {
   res.sendFile(path.join(__dirname, '../dist', 'index.html'));

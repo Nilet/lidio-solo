@@ -9,7 +9,7 @@ function Home() {
         <>
             <LabsWrapper />
             <Button content="testeHealthCheck" callback={async () => {
-                const response = await fetch(`${apiUrl}/health-check`);
+                const response = await fetch(`${apiUrl}/api/health-check`);
                 const result = await response.json()
                 console.log(result)
             }} />
