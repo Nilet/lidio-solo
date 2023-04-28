@@ -1,7 +1,6 @@
 import express from 'express';
 import fileUpload from 'express-fileupload';
 import path from 'path'
-import cors from 'cors';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
@@ -12,14 +11,20 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 app.use(fileUpload());
-const corsOptions = {
-  origin: '*',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-  optionsSuccessStatus: 200,
-};
 
 app.use(express.static(path.join(__dirname, '../dist')));
-app.use(cors(corsOptions))
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
+
 app.use(express.json());
 
 
