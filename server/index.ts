@@ -21,6 +21,10 @@ const corsOptions = {
 app.use(express.static('./dist'));
 app.use(cors(corsOptions))
 app.use(express.json());
+app.use((_, res) => {
+  res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
+});
+
 
 app.post("/upload", (req, res ) => {
         if (!req.files) {
