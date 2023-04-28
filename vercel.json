@@ -17,5 +17,5 @@
             "src": "server-build/index.js",
             "use": "@vercel/node"
         }
-    ],
+    ]
 }
