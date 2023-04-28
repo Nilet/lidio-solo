@@ -18,12 +18,9 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 
-app.use(express.static('./dist'));
+app.use(express.static(path.join(__dirname, '../dist')));
 app.use(cors(corsOptions))
 app.use(express.json());
-app.use((_, res) => {
-  res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
-});
 
 
 app.post("/upload", (req, res ) => {
